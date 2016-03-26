@@ -1,0 +1,47 @@
+<%= simple_form_for @post, html: {multipart: true} do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <br>
+
+    <div class="btn btn-primary">
+      <%= f.file_field :picture, accept: "image/jpeg, image/gif, image/png" %>
+    </div>
+    <br>
+    <br>
+    <%= f.input :title, :hint => "标题." %>
+    <%= f.input :tag_list, :hint => "请填写标签,多标签用逗号(英文输入法下的)隔开." %>
+    <%= f.input :content, :hint => "一句话简单描述." %>
+    <br>
+    <%= f.submit '保存', class: 'btn btn-success' %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

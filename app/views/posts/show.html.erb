@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+        <div class="thumbnail">
+            <%= image_tag(@post.picture_url) if @post.picture? %>
+        </div>
+        <div class="caption">
+          
+          <p><%= @post.content %></p>
+        </div> 
+        <tr>
+          <td><%= link_to '修改', edit_post_path(@post) %></td>          
+        </tr> 
+    </div> 
+    <br>
+    <div class="caption">
+      <%= link_to like_post_path(@post), class: "like", method: :put do %>
+        <button class="btn btn-info" type="button" aria-label="Left Align">
+          <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+          <span class="badge"><%= @post.get_upvotes.size %></span>
+        </button>
+      <% end %>
+      <%= link_to unlike_post_path(@post), class: "like", method: :put do %>
+        <button class="btn btn-info" type="button" aria-label="Left Align">
+          <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+          <span class="badge"><%= @post.get_downvotes.size %></span>
+        </button>
+      <% end %>      
+    </div> 
+    <br>
+      <%= social_share_button_tag(@post.title) %>
+    <br>
+    标签: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join('. ') %>
+    <br>
+
+
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

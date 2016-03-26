@@ -1,0 +1,16 @@
+        <div class="body_top right">
+          <%= like.count %> 感谢 | 
+          <%= comment.count %> 评论 | 
+          <%= link_to '标签' %>
+        </div>
+
+
+        <% @post.comments.each do |comment| %>
+		    <%= comment.body %>
+		    <br>
+		    <%= link_to '更多评论' %>
+		<% end %>
+
+<%= simple_form_for [@post, @post.comments.build] do |f| %>
+  感谢 + 1 | <%= f.input :comment %> | ...(举报弹出框)
+<% end %>		

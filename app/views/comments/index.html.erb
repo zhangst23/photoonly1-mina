@@ -1,0 +1,13 @@
+      <div class="col-md-3">        
+          <br> --- <br>
+          <% @comments.each do |comment| %>
+              <%= comment.body %>
+              <br>
+              <%= link_to '更多评论' %>
+          <% end %>
+
+          <div class="body_todo">
+            感谢 + 1 | <%= f.input :comment %> | ...(举报弹出框)
+          </div>
+        
+      </div> 
